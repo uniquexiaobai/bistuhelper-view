@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>北京信息科技大学地图</title>
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		#container {
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+
+	<script src="//api.map.baidu.com/api?v=3.0&ak=lOTNeoA0GOzjdF6Pa5h330Ntzn4VxTmw"></script>
+	<script>
+		var map = new BMap.Map('container');
+		var centerPoint = new BMap.Point(116.436857, 39.976221);
+
+		map.centerAndZoom(centerPoint, 12);
+		map.addControl(new BMap.NavigationControl({anchor: BMAP_ANCHOR_BOTTOM_RIGHT, type: BMAP_NAVIGATION_CONTROL_ZOOM}));
+
+		const list1 = [
+			[116.387073, 39.996051],
+		    [116.387055, 39.994237],
+		    [116.391097, 39.994379],
+		    [116.391061, 39.99594],
+		    [116.389705, 39.995923],
+		    [116.389691, 39.996109],
+		    [116.387073, 39.996051],
+		];
+		polylineCreater(list1);
+
+		markerCreater([116.38902, 39.995149], '健翔桥校区');
+		markerCreater([116.353794, 40.043842], '小营校区');
+		markerCreater([116.349066, 40.049874], '清河校区');
+		markerCreater([116.495902, 39.970938], '酒仙桥校区');
+		markerCreater([116.478278, 39.927502], '金台路校区');
+
+		function polylineCreater(list) {
+			var polylineStyle = {
+				strokeStyle: 'dashed',
+				strokeColor: "blue",
+				strokeWeight: 1, 
+				strokeOpacity: 1,
+			};
+			var points = list.map(function (pos) {
+				return new BMap.Point(pos[0], pos[1]);
+			});
+			var polyline = new BMap.Polyline(points, polylineStyle);
+
+			map.addOverlay(polyline);
+		}
+
+		function markerCreater(pos, name) {
+			var iconUrl = 'http://p8hsgb6wh.bkt.clouddn.com/icon-map-marker.png'; // 七牛云
+			var iconSize = new BMap.Size(25, 25);
+			var icon = new BMap.Icon(iconUrl, iconSize, {imageSize: iconSize});
+
+			var point = new BMap.Point(pos[0], pos[1]);
+			var marker = new BMap.Marker(point, {icon: icon});
+
+			var labelOffset = new BMap.Size(20, -10);
+			if (name === '小营校区') labelOffset = new BMap.Size(20, 0);
+			var labelStyle = {color: '#fff', borderWidth: 0, backgroundColor: '#f34235'};
+			var label = new BMap.Label(name, {offset: labelOffset});
+
+			label.setStyle(labelStyle);
+			marker.setLabel(label);
+			map.addOverlay(marker);
+		}
+	</script>
+</body>
+</html>
