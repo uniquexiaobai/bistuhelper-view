@@ -17,7 +17,7 @@
 <body>
 	<div id="container"></div>
 
-	<script src="//api.map.baidu.com/api?v=3.0&ak=lOTNeoA0GOzjdF6Pa5h330Ntzn4VxTmw"></script>
+	<script src="https://api.map.baidu.com/api?v=3.0&ak=lOTNeoA0GOzjdF6Pa5h330Ntzn4VxTmw"></script>
 	<script>
 		var map = new BMap.Map('container');
 		var centerPoint = new BMap.Point(116.436857, 39.976221);
@@ -58,7 +58,7 @@
 		}
 
 		function markerCreater(pos, name) {
-			var iconUrl = 'http://p8hsgb6wh.bkt.clouddn.com/icon-map-marker.png'; // 七牛云
+			var iconUrl = 'https://bistuhelper.oss-cn-hangzhou.aliyuncs.com/icon-map-marker.png';
 			var iconSize = new BMap.Size(25, 25);
 			var icon = new BMap.Icon(iconUrl, iconSize, {imageSize: iconSize});
 
