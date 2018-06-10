@@ -72,5 +72,13 @@
 		<a href="#">ifLab</a>
 		<a href="http://www.testzs.cn/">数据助手</a>
 	</div>
+
+	<script>
+		if ('serviceWorker' in navigator) {
+		    window.onload = function () {
+		        navigator.serviceWorker.register('/sw.js');
+		    };
+		}
+	</script>
 </body>
 </html>

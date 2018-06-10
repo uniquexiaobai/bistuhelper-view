@@ -42,7 +42,13 @@
 	    var detail = new BMapSub.DetailInfo(subway);
 	    subway.addEventListener('tap', function(e) {
         	detail.search(e.station.name);
-	    });
-	</script>
+        });
+        
+        if ('serviceWorker' in navigator) {
+		    window.onload = function () {
+		        navigator.serviceWorker.register('/sw.js');
+		    };
+		}
+    </script>
 </body>
 </html>

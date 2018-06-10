@@ -73,7 +73,13 @@
 			label.setStyle(labelStyle);
 			marker.setLabel(label);
 			map.addOverlay(marker);
+        }
+        
+        if ('serviceWorker' in navigator) {
+		    window.onload = function () {
+		        navigator.serviceWorker.register('/sw.js');
+		    };
 		}
-	</script>
+    </script>
 </body>
 </html>
