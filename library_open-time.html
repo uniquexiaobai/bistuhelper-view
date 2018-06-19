@@ -16,6 +16,14 @@
 <body>
 	<div>
 		<img src="https://bistuhelper.oss-cn-hangzhou.aliyuncs.com/library_open-time.jpg" alt="">
-	</div>
+    </div>
+    
+    <script>
+		if ('serviceWorker' in navigator) {
+		    window.onload = function () {
+		        navigator.serviceWorker.register('/sw.js');
+		    };
+		}
+	</script>
 </body>
 </html>
